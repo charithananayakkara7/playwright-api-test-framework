@@ -40,13 +40,3 @@ export class UserAccountSupport {
         return response;
     }
 }
-//token geenenration file
-//make rest client
-//make cnstrutor and secure private variables
-//remove comment and unnnecssary struff
-//make mian api call method a  swtich case
-//add temp dcoker and jenkins files
-//git set
-
-
-//create new git repor for selenium
