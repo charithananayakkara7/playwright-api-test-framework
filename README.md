@@ -1,10 +1,10 @@
-Setup
-Prerequisites
-Node.js and npm installed on your machine.
+**Description**
+
+Steps :
 
 1) Clone the repository
 2) Change the env varibales with your own credntials
-3) Running Tests 
+3) Running Tests
 
     npx playwright test
     Runs the end-to-end tests.
