@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+    
+    parameters {
+        string(name: 'TEST_SUITE', defaultValue: 'regression', description: 'Which test suite to run')
+        string(name: 'ENVIRONMENT', defaultValue: 'input test env', description: 'Which environment to run tests against')
+        string(name: 'BROWSER', defaultValue: 'chromium', description: 'Which browser to run tests against (chromium, firefox, webkit)')
+    }
+    
+    options {
+        ansiColor('xterm')
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                script {
+                    def playwrightCommand = 'npx playwright test'
+
+                    if (params.TEST_SUITE) {
+                        playwrightCommand += " --match '${params.TEST_SUITE}'"
+                    }
+
+                    if (params.ENVIRONMENT) {
+                        playwrightCommand += " --env base_url='${params.ENVIRONMENT}'"
+                    }
+
+                    if (params.BROWSER) {
+                        playwrightCommand += " --browser ${params.BROWSER}"
+                    }
+
+                    try {
+                        sh playwrightCommand
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        throw e
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always { 
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'playwright/reports',
+                reportFiles: 'index.html',
+                reportName: 'HTML Report',
+                reportTitles: ''
+            ])
+        }
+    }
+}
