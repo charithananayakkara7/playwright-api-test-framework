@@ -20,11 +20,11 @@ export class TokenGeneration {
             email: username,
             password: password
         };
-        const token = await this.generateToken(url, auth);
+        const token = await this.generateRawToken(url, auth);
         return token;
     }
 
-    private async generateToken(url: string, auth: AuthenticationData): Promise<string> {
+    private async generateRawToken(url: string, auth: AuthenticationData): Promise<string> {
                     const rawResponse = await fetch(url, {
                         method: 'POST',
                         headers: {
@@ -34,10 +34,10 @@ export class TokenGeneration {
                         body: JSON.stringify(auth)
                       });
                       const response = await rawResponse.json();
-                  return  this.buildToken( response);   
+                  return  this.sanitizeToken( response);   
     }
 
-    private buildToken(response: { data: { token: string; }; }): string {
+    private sanitizeToken(response: { data: { token: string; }; }): string {
         if (Object.prototype.hasOwnProperty.call(response, "data")) {
             if (Object.prototype.hasOwnProperty.call(response.data, "token")) {
                 return "Bearer " + response.data.token;
