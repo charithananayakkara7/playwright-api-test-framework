@@ -9,7 +9,6 @@ const url = process.env.BASE_URL_WITH_TOKEN;
 const tokenGeneration = new TokenGeneration();
 
 /**
- * Make an API request.
  * @returns The API response.
  */
 export async function makeApiRequest(endpoint: string,token: string | unknown,payload?: any,method: Method = Method.GET,accept: string = 'application/json'): Promise<APIResponse> {
@@ -33,9 +32,6 @@ export async function makeApiRequest(endpoint: string,token: string | unknown,pa
 }
 
 /**
- * Create a request context with the specified token and accept header.
- * @param token - The authentication token.
- * @param accept - The accept header.
  * @returns The API request context.
  */
 async function createRequestContext(token: string | unknown, accept: string): Promise<APIRequestContext> {
