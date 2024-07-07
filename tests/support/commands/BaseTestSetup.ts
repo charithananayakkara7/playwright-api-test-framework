@@ -39,11 +39,12 @@ export async function makeApiRequest(endpoint: string,token: string | unknown,pa
  * @returns The API request context.
  */
 async function createRequestContext(token: string | unknown, accept: string): Promise<APIRequestContext> {
-    const BaseUrl = getEnvVariable("BASE_URL_WITH_TOKEN");
-    const UserName = getEnvVariable("API_USERNAME");
-    const Password = getEnvVariable("API_PASSWORD");
-    const Token = await tokenGeneration.getToken(BaseUrl, UserName, Password);
-    console.debug(`\x1b[32m%s\x1b[0m`, `Here is the Generated Token: ${Token}`);
+    //Uncomment for token base api calls
+    // const BaseUrl = getEnvVariable("BASE_URL_WITH_TOKEN");
+    // const UserName = getEnvVariable("API_USERNAME");
+    // const Password = getEnvVariable("API_PASSWORD");
+    // const Token = await tokenGeneration.getToken(BaseUrl, UserName, Password);
+    // console.debug(`\x1b[32m%s\x1b[0m`, `Here is the Generated Token: ${Token}`);
 
     return request.newContext({
         extraHTTPHeaders: {
