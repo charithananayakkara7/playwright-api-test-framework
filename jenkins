@@ -3,7 +3,7 @@ pipeline {
     
     parameters {
         string(name: 'TEST_SUITE', defaultValue: 'regression', description: 'Which test suite to run')
-        string(name: 'ENVIRONMENT', defaultValue: 'input test env', description: 'Which environment to run tests against')
+        string(name: 'ENVIRONMENT', defaultValue: 'URL goes here', description: 'Which environment to run tests against')
         string(name: 'BROWSER', defaultValue: 'chromium', description: 'Which browser to run tests against (chromium, firefox, webkit)')
     }
     
@@ -12,6 +12,15 @@ pipeline {
     }
     
     stages {
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install Node.js dependencies
+                    sh 'npm install'
+                }
+            }
+        }
+        
         stage('Checkout') {
             steps {
                 checkout scm
