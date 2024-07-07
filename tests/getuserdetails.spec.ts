@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { CommonUserRequest} from "./support/models/request/creation/CommonUsersRequest.ts";
 import {UserAccountSupport} from "./support/users/user-account.support.ts";
-import {validateRequestIsSuccessful } from './support/commands/BaseTest.ts';
+import {validateRequestIsSuccessful } from './support/commands/BaseTestSetup.ts';
 import { state } from './support/context/state.ts';
 
 test.describe.serial('Creating a New User and Get User Information', () => {

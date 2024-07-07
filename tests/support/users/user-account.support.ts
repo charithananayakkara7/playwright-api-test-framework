@@ -3,7 +3,7 @@ import { CommonUserRequest} from "../models/request/creation/CommonUsersRequest"
 import { CreateUserDetailsResponse,GetUserDetailsResponse} from "../models/response/creation/UsersResponses";
 import {Method} from "../models/methods/model.methods";
 import {APIRequestContext, APIResponse} from "@playwright/test";
-import {makeApiRequest} from "../commands/BaseTest";
+import {makeApiRequest} from "../commands/BaseTestSetup";
 import {faker} from "@faker-js/faker";
 import appEndpoints from '../constants/appEndpoints';
 import { state } from '../context/state';
