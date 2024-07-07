@@ -3,7 +3,7 @@
 Steps :
 
 1) Clone the repository
-2) Change the .env file varibales with your own credntials
+2) Change the .env file varibales with your own credentials
 3) Running Tests
 
     - npx playwright test
