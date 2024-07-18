@@ -1,5 +1,6 @@
 **Description**
 This is a back-end testing automation framework with playwright using OOP concepts and various creational design patterns like the factory method, singleton, etc.
+
 Steps :
 
 1) Clone the repository
