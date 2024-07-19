@@ -8,9 +8,7 @@ const password = process.env.API_PASSWORD;
 const url = process.env.BASE_URL_WITH_TOKEN;
 const tokenGeneration = new TokenGeneration();
 
-/**
- * @returns The API response.
- */
+
 export async function makeApiRequest(endpoint: string,token: string | unknown,payload?: any,method: Method = Method.GET,accept: string = 'application/json'): Promise<APIResponse> {
     const context = await createRequestContext(token, accept);
     let response: APIResponse;
@@ -31,9 +29,7 @@ export async function makeApiRequest(endpoint: string,token: string | unknown,pa
     return response;
 }
 
-/**
- * @returns The API request context.
- */
+
 async function createRequestContext(token: string | unknown, accept: string): Promise<APIRequestContext> {
     //Uncomment for token base api calls
     // const BaseUrl = getEnvVariable("BASE_URL_WITH_TOKEN");
@@ -54,24 +50,6 @@ async function createRequestContext(token: string | unknown, accept: string): Pr
 export function validateRequestIsSuccessful(status:number) {
     expect(state.testContext.response.ok()).toBeTruthy();
     expect(state.testContext.response.status()).toBe(status);
-}
-
-/**
- * Login via UI
- * @param page
- */
-export async function doLogin(page: Page): Promise<void> {
-    await page.goto('/');
-    await page.fill('#user',`${userName}`);
-    await page.fill('#pwd', `${password}`);
-    await page.click('button[type="submit"]');
-    await page.waitForURL('index.php');
-}
-
-export async function navigateIndex(page: Page): Promise<void> {
-    await page.goto('/');
-    const url = page.url();
-    expect(url).toContain('index.php');
 }
 
 
