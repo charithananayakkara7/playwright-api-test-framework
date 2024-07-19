@@ -1,5 +1,5 @@
 **Description**
-This is a back-end testing automation framework with playwright using OOP concepts and various creational design patterns like the factory method pattern, singleton pattern, service object pattern, modular design pattern etc.
+This is a back-end testing automation framework with playwright using OOP concepts and various creational design patterns like the factory method pattern, singleton pattern, service object model pattern, modular design pattern etc.
 
 Steps :
 
